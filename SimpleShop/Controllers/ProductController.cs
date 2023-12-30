@@ -29,7 +29,7 @@ namespace SimpleShop.ModifyApi.Controllers
             return response;
         }
         
-        [HttpGet("{id}", Name = "[controller]/Get")]
+        [HttpGet("{id}")]
         public async Task<ProductDto> Get(long id)
         {
             var query = new GetProductByIdQuery(id);

@@ -8,5 +8,15 @@ namespace SimpleShop.Application.Modify.Commands.Products.Create
         public string Name { get; set; }
 
         public decimal Price { get; set; }
+        
+        
+        public ImageBase64Command? Image { get; set; }
+    }
+
+    public class ImageBase64Command
+    {
+        public string Name { get; set; }
+        
+        public string Content { get; set; }
     }
 }

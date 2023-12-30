@@ -1,9 +1,7 @@
-﻿using KafkaFlow;
-using KafkaFlow.Serializer;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleShop.Application.Modify.Events;
 using SimpleShop.Application.Modify.Interfaces;
+using SimpleShop.Infrastructure.AWS;
 using SimpleShop.Infrastructure.Common;
 using SimpleShop.Infrastructure.Kafka;
 using SimpleShop.Infrastructure.Persistence;
@@ -26,6 +24,9 @@ namespace SimpleShop.Infrastructure
 
             services.AddTransient<IServiceBus, ServiceBus>();
             
+            services.AddSingleton<AwsS3Config>(x => configuration.GetSection("AwsS3Config").Get<AwsS3Config>());
+            
+            services.AddTransient<IFilesStorage, AwsS3Service>();
 
             return services;
         }
