@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleShop.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleShop.Application", "SimpleShop.Application\SimpleShop.Application.csproj", "{DC5327F6-9313-4976-8E11-04AFFD3FB538}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleShop.DbSync", "SimpleShop.DbSync\SimpleShop.DbSync.csproj", "{B2C1F10D-DB71-4D5E-A129-9C23FF5DC3EC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{DC5327F6-9313-4976-8E11-04AFFD3FB538}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC5327F6-9313-4976-8E11-04AFFD3FB538}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC5327F6-9313-4976-8E11-04AFFD3FB538}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2C1F10D-DB71-4D5E-A129-9C23FF5DC3EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2C1F10D-DB71-4D5E-A129-9C23FF5DC3EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2C1F10D-DB71-4D5E-A129-9C23FF5DC3EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2C1F10D-DB71-4D5E-A129-9C23FF5DC3EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

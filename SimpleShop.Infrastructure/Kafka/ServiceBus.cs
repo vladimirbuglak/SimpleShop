@@ -15,13 +15,5 @@ public class ServiceBus : IServiceBus
 
     public async Task PublishAsync<T>(T message) where T : BaseEvent
     {
-        if (!EventTopics.Mapping.TryGetValue(typeof(T), out var kafkaProducer))
-        {
-            throw new InvalidOperationException($"Topic name for type: {typeof(T).FullName} not found");
-        }
-        
-        var producer = ProducerAccessor.GetProducer(kafkaProducer.Name);
-        
-        await producer.ProduceAsync(kafkaProducer.TopicName, message.Id.ToString(), message);
     }
 }

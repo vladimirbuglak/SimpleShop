@@ -25,20 +25,6 @@ using (var scope = app.Services.CreateScope())
     await dbInitializer.MigrateAsync();
 }
 
-var kafkaBus = app.Services.CreateKafkaBus();
-
-app.Lifetime.ApplicationStarted.Register(async (o, token) =>
-{
-    await kafkaBus.StartAsync();
-}, null);
-
-
-app.Lifetime.ApplicationStopped.Register(async (o, token) =>
-{
-    await kafkaBus.StopAsync();
-}, null);
-
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
