@@ -39,7 +39,8 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         {
             Name = request.Name,
             Price = request.Price,
-            CreateOn = DateTime.UtcNow
+            CreateOn = DateTime.UtcNow,
+            ImageUrl = string.Empty
         };
 
         if (request.Image != null)

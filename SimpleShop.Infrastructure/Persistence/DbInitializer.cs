@@ -22,9 +22,6 @@ public class DbInitializer : IDbInitializer
 
     public async Task MigrateAsync()
     {
-        if (ReadShopContext.IsSqlServer())
-            await ReadShopContext.MigrateAsync();
-
         if (ModifyShopContext.IsSqlServer())
             await ModifyShopContext.MigrateAsync();
     }
