@@ -10,21 +10,27 @@ namespace SimpleShop.Application.Modify.Commands.Products.Create;
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto>
 {
     private ILogger Logger { get; }
-
+    
     private IDateTime DateTime { get; }
 
     private IServiceBus ServiceBus { get; }
 
     private IModifyShopContext Context { get; }
+    
+    private IFilesStorage FilesStorage { get; set; }
 
-
-    public CreateProductCommandHandler(ILogger<CreateProductCommandHandler> logger, IModifyShopContext context,
-        IServiceBus serviceBus, IDateTime dateTime)
+    public CreateProductCommandHandler(
+        ILogger<CreateProductCommandHandler> logger,
+        IModifyShopContext context,
+        IServiceBus serviceBus,
+        IDateTime dateTime,
+        IFilesStorage filesStorage)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         Context = context ?? throw new ArgumentNullException(nameof(context));
         ServiceBus = serviceBus ?? throw new ArgumentNullException(nameof(serviceBus));
         DateTime = dateTime ?? throw new ArgumentNullException(nameof(dateTime));
+        FilesStorage = filesStorage ?? throw new ArgumentNullException(nameof(filesStorage));
     }
 
     public async Task<ProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
@@ -35,6 +41,11 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
             Price = request.Price,
             CreateOn = DateTime.UtcNow
         };
+
+        if (request.Image != null)
+        {
+            product.ImageUrl = await FilesStorage.UploadAsync(request.Image.ToUploadFile(request.Name));
+        }
 
         Context.Products.Add(product);
 
